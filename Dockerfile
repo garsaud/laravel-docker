@@ -7,14 +7,17 @@ RUN apk add --no-cache \
         freetype-dev \
         libpng-dev \
         libjpeg-turbo-dev \
+        libxml2-dev \
     && docker-php-ext-configure gd \
         --with-gd \
         --with-freetype-dir=/usr/include/ \
         --with-png-dir=/usr/include/ \
         --with-jpeg-dir=/usr/include/ \
-        --enable-exif \
     && NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) \
     && docker-php-ext-install -j${NPROC} gd \
+    && docker-php-ext-install soap \
+    && docker-php-ext-install exif \
+    && docker-php-ext-install fileinfo \
     && apk del --no-cache \
         freetype-dev \
         libpng-dev \
