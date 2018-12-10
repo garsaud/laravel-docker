@@ -18,6 +18,7 @@ RUN apk add --no-cache \
     && docker-php-ext-install soap \
     && docker-php-ext-install exif \
     && docker-php-ext-install fileinfo \
+    && docker-php-ext-install bcmath \
     && apk del --no-cache \
         freetype-dev \
         libpng-dev \
