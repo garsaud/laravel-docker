@@ -22,7 +22,6 @@ RUN echo "https://repos.php.earth/alpine/v3.8" \
         php7.3-fileinfo \
         php7.3-ftp \
         php7.3-iconv \
-        php7.3-imagick \
         php7.3-json \
         php7.3-mbstring \
         php7.3-opcache \
