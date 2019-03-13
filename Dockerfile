@@ -23,6 +23,7 @@ RUN echo "https://repos.php.earth/alpine/v3.8" \
         php7.3-ftp \
         php7.3-gd \
         php7.3-iconv \
+        php7.3-imagick \
         php7.3-json \
         php7.3-mbstring \
         php7.3-opcache \
@@ -34,6 +35,7 @@ RUN echo "https://repos.php.earth/alpine/v3.8" \
         php7.3-session \
         php7.3-shmop \
         php7.3-simplexml \
+        php7.3-sqlite3 \
         php7.3-sockets \
         php7.3-sysvmsg \
         php7.3-sysvsem \
@@ -52,11 +54,10 @@ RUN echo "https://repos.php.earth/alpine/v3.8" \
     && curl -s https://getcomposer.org/installer | php -- \
         --install-dir=/usr/local/bin/ \
         --filename=composer \
-    && mkdir -p /run/apache2 \
+    && mkdir -p /run/apache2 /var/www/localhost/public \
     && sed -i 's,/var/www/localhost/htdocs,/var/www/localhost/public,g' \
         /etc/apache2/httpd.conf
 
 WORKDIR /var/www/localhost
 
-ENTRYPOINT sed -i "s,Listen 80,Listen ${PORT},g" \
-        /etc/apache2/httpd.conf && httpd -D FOREGROUND
+ENTRYPOINT httpd -D FOREGROUND
