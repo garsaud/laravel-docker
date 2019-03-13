@@ -60,4 +60,12 @@ RUN echo "https://repos.php.earth/alpine/v3.8" \
 
 WORKDIR /var/www/localhost
 
+RUN apk add mysql mysql-client \
+    && printf "[mysqld]\nuser=root\ndatadir=/data/mysql\nlog-bin=/data/mysql/mysql-bin\n" > /etc/mysql/my.cnf \
+    && mkdir -p -m 777 /run/mysqld \
+    && mysql_install_db
+
+COPY mysql.sh /mysql.sh
+CMD /mysql.sh
+
 ENTRYPOINT httpd -D FOREGROUND
