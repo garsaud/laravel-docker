@@ -51,6 +51,7 @@ RUN echo "https://repos.php.earth/alpine/v3.8" \
         ca-certificates \
         npm \
         apache2 \
+        rsync \
     && curl -s https://getcomposer.org/installer | php -- \
         --install-dir=/usr/local/bin/ \
         --filename=composer \
