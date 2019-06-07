@@ -30,6 +30,7 @@ RUN echo "https://repos.php.earth/alpine/v3.8" \
         php7.3-openssl \
         php7.3-pdo \
         php7.3-pdo_mysql \
+        php7.3-pdo_sqlite \
         php7.3-phar \
         php7.3-posix \
         php7.3-session \
